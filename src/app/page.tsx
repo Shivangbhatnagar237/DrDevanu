@@ -61,13 +61,27 @@ export default function HomePage() {
           <div className="flex items-center justify-between gap-6 text-ink">
             <div className="flex items-center gap-5">
               {[
-                { label: "Instagram", Icon: Instagram },
-                { label: "YouTube", Icon: Youtube },
-                { label: "LinkedIn", Icon: Linkedin }
-              ].map(({ label, Icon }) => (
+                {
+                  label: "Instagram",
+                  Icon: Instagram,
+                  href: "https://www.instagram.com/drdevanu/"
+                },
+                {
+                  label: "YouTube",
+                  Icon: Youtube,
+                  href: "https://www.youtube.com/@Drdevanu"
+                },
+                {
+                  label: "LinkedIn",
+                  Icon: Linkedin,
+                  href: "https://www.linkedin.com/in/devanu-bhatnagar/"
+                }
+              ].map(({ label, Icon, href }) => (
                 <Link
                   key={label}
-                  href="/"
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
                   aria-label={label}
                   className="flex h-10 w-10 items-center justify-center rounded-full bg-white/36 backdrop-blur-md transition duration-300 hover:bg-white/70 hover:text-plum"
                 >
@@ -117,16 +131,27 @@ export default function HomePage() {
                 Healing Through Stillness
               </h2>
               <ArrowLink href="/about" light className="mt-6">
-                View Insights
+                Explore Philosophy
               </ArrowLink>
             </div>
           </BentoCard>
 
-          <BentoCard className="flex min-h-[360px] flex-col justify-between bg-mist p-8 md:p-10 lg:min-h-[520px]">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white text-plum">
-              <Flower2 className="h-8 w-8 stroke-[1.35]" aria-hidden="true" />
+          <BentoCard className="grid min-h-[360px] bg-mist p-8 md:p-10 lg:min-h-[520px] lg:grid-rows-[auto_1fr]">
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white text-plum shadow-[0_14px_34px_rgba(107,91,149,0.08)]">
+                <Flower2 className="h-8 w-8 stroke-[1.35]" aria-hidden="true" />
+              </div>
+              <div className="flex flex-wrap justify-end gap-2">
+                <span className="rounded-full bg-white/76 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-ink/54">
+                  Breathwork
+                </span>
+                <span className="rounded-full bg-white/76 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-ink/54">
+                  Silence
+                </span>
+              </div>
             </div>
-            <div>
+
+            <div className="mt-8 flex flex-col justify-between">
               <h3 className="font-serif text-4xl leading-tight text-ink">
                 Curated Retreats
               </h3>
@@ -134,6 +159,24 @@ export default function HomePage() {
                 Seasonal immersions designed for nervous system restoration,
                 soul-alignment, contemplative clarity, and mindful reconnection.
               </p>
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                <div className="rounded-[1.3rem] border border-white/70 bg-white/66 px-4 py-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-plum">
+                    Intimate setting
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-ink/62">
+                    Small group environments for deeper reflection and nervous system ease.
+                  </p>
+                </div>
+                <div className="rounded-[1.3rem] border border-white/70 bg-white/66 px-4 py-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-plum">
+                    Embodied reset
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-ink/62">
+                    Practices that bring people back into stillness, clarity, and presence.
+                  </p>
+                </div>
+              </div>
               <ArrowLink href="/#retreats" className="mt-7">
                 Explore Retreats
               </ArrowLink>

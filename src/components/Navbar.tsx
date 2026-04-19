@@ -22,9 +22,10 @@ type NavbarProps = {
 
 export function Navbar({ theme = "light" }: NavbarProps) {
   const [atTop, setAtTop] = useState(true);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mobileMenuPathname, setMobileMenuPathname] = useState<string | null>(null);
   const pathname = usePathname();
   const isLight = theme === "light";
+  const isMobileMenuOpen = mobileMenuPathname === pathname;
 
   useEffect(() => {
     const onScroll = () => setAtTop(window.scrollY < 40);
@@ -33,10 +34,6 @@ export function Navbar({ theme = "light" }: NavbarProps) {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [pathname]);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-8">
@@ -135,7 +132,11 @@ export function Navbar({ theme = "light" }: NavbarProps) {
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMobileMenuOpen}
           aria-controls="mobile-navigation"
-          onClick={() => setIsMobileMenuOpen((open) => !open)}
+          onClick={() =>
+            setMobileMenuPathname((current) =>
+              current === pathname ? null : pathname
+            )
+          }
         >
           {isMobileMenuOpen ? (
             <X className="h-5 w-5 stroke-[1.6]" aria-hidden="true" />
@@ -160,7 +161,7 @@ export function Navbar({ theme = "light" }: NavbarProps) {
                 key={link.href}
                 href={link.href}
                 className="rounded-[1.25rem] px-4 py-3 text-base font-medium text-ink/82 transition duration-200 hover:bg-white hover:text-plum"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => setMobileMenuPathname(null)}
               >
                 {link.label}
               </Link>

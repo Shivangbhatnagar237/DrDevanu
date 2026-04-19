@@ -15,9 +15,10 @@ const inquiryOptions: Array<{ value: InquiryType; label: string }> = [
 export function ContactInquiryForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phone, setPhone] = useState("+91 ");
   const [inquiryType, setInquiryType] = useState<InquiryType>("mentorship");
   const [message, setMessage] = useState("");
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "");
   const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
@@ -39,8 +40,39 @@ export function ContactInquiryForm() {
     return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(payload)}`;
   }, [email, inquiryType, message, name, phone, whatsappNumber]);
 
+  const validateForm = () => {
+    const newErrors: { [key: string]: string } = {};
+
+    if (!name.trim()) {
+      newErrors.name = "Name is required.";
+    }
+
+    if (!email.trim()) {
+      newErrors.email = "Email is required.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = "Please enter a valid email address.";
+    }
+
+    if (!phone.trim()) {
+      newErrors.phone = "Phone number is required.";
+    } else if (!/^\+91 \d{10}$/.test(phone)) {
+      newErrors.phone = "Phone number must be in the format +91 followed by 10 digits.";
+    }
+
+    if (!message.trim()) {
+      newErrors.message = "Message is required.";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
 
     if (whatsappHref) {
       window.open(whatsappHref, "_blank", "noopener,noreferrer");
@@ -64,6 +96,32 @@ export function ContactInquiryForm() {
     }
   };
 
+  const handleNameChange = (value: string) => {
+    setName(value);
+    setErrors({});
+  };
+
+  const handleEmailChange = (value: string) => {
+    setEmail(value);
+    setErrors({});
+  };
+
+  const handlePhoneChange = (value: string) => {
+    // Ensure it starts with +91 and space, then allow digits
+    if (value.startsWith("+91 ")) {
+      const digits = value.slice(4).replace(/\D/g, "").slice(0, 10);
+      setPhone("+91 " + digits);
+    } else {
+      setPhone("+91 ");
+    }
+    setErrors({});
+  };
+
+  const handleMessageChange = (value: string) => {
+    setMessage(value);
+    setErrors({});
+  };
+
   return (
     <form onSubmit={handleSubmit} className="grid gap-4">
       <div className="grid gap-4 md:grid-cols-2">
@@ -73,10 +131,11 @@ export function ContactInquiryForm() {
           </span>
           <input
             value={name}
-            onChange={(event) => setName(event.target.value)}
+            onChange={(event) => handleNameChange(event.target.value)}
             placeholder="Drishti Sharma"
             className="mt-3 w-full border-0 bg-transparent p-0 text-sm text-ink outline-none placeholder:text-ink/28"
           />
+          {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
         </label>
 
         <label className="group rounded-[1.75rem] border border-ink/8 bg-white/90 px-5 py-4 shadow-[0_14px_40px_rgba(26,26,26,0.06)] transition duration-300 focus-within:border-plum/35 focus-within:shadow-[0_18px_50px_rgba(107,91,149,0.12)]">
@@ -86,10 +145,11 @@ export function ContactInquiryForm() {
           <input
             type="email"
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(event) => handleEmailChange(event.target.value)}
             placeholder="you@example.com"
             className="mt-3 w-full border-0 bg-transparent p-0 text-sm text-ink outline-none placeholder:text-ink/28"
           />
+          {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
         </label>
       </div>
 
@@ -100,10 +160,11 @@ export function ContactInquiryForm() {
           </span>
           <input
             value={phone}
-            onChange={(event) => setPhone(event.target.value)}
+            onChange={(event) => handlePhoneChange(event.target.value)}
             placeholder="+91 XXXXX XXXXX"
             className="mt-3 w-full border-0 bg-transparent p-0 text-sm text-ink outline-none placeholder:text-ink/28"
           />
+          {errors.phone && <p className="mt-1 text-xs text-red-500">{errors.phone}</p>}
         </label>
 
         <label className="group rounded-[1.75rem] border border-ink/8 bg-white/90 px-5 py-4 shadow-[0_14px_40px_rgba(26,26,26,0.06)] transition duration-300 focus-within:border-plum/35 focus-within:shadow-[0_18px_50px_rgba(107,91,149,0.12)]">
@@ -130,11 +191,12 @@ export function ContactInquiryForm() {
         </span>
         <textarea
           value={message}
-          onChange={(event) => setMessage(event.target.value)}
+          onChange={(event) => handleMessageChange(event.target.value)}
           placeholder="Share what you are moving through, what kind of support you are seeking, or which program you want to explore."
           rows={6}
           className="mt-3 w-full resize-none border-0 bg-transparent p-0 text-sm leading-7 text-ink outline-none placeholder:text-ink/28"
         />
+        {errors.message && <p className="mt-1 text-xs text-red-500">{errors.message}</p>}
       </label>
 
       <div className="flex flex-col gap-3 pt-2 md:flex-row md:items-center md:justify-between">

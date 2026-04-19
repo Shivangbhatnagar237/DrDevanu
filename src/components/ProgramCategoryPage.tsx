@@ -4,7 +4,8 @@ import { BentoCard } from "@/components/BentoCard";
 import { ButtonLink } from "@/components/ButtonLink";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
-import type { Program } from "@/lib/content";
+import Image from "next/image";
+import { images, type Program } from "@/lib/content";
 
 type ProgramCategoryPageProps = {
   eyebrow: string;
@@ -61,6 +62,22 @@ export function ProgramCategoryPage({
           </div>
 
           <div className="grid gap-4 self-end sm:grid-cols-2">
+            <div className="relative min-h-[500px] overflow-hidden rounded-[1.8rem] border border-white/60 bg-charcoal shadow-[0_18px_60px_rgba(45,45,45,0.08)] sm:col-span-2">
+              <Image
+                src={categoryLabel.includes("Therapy") ? images.founder : images.editorial}
+                alt={categoryLabel.includes("Therapy") ? "Dr. Devanu in a calming portrait" : "Dr. Devanu in a reflective portrait"}
+                fill
+                sizes="(min-width: 768px) 40vw, 100vw"
+                className={`object-cover ${categoryLabel.includes("Therapy") ? "object-[center_30%]" : "object-[center_18%]"}`}
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,20,20,0.08)_0%,rgba(20,20,20,0.56)_100%)]" />
+              <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/60">
+                  Guided Mentorship Pathways
+                </p>
+              </div>
+            </div>
+
             <div className="rounded-[1.8rem] border border-white/60 bg-white/82 p-5 shadow-[0_18px_60px_rgba(45,45,45,0.07)] backdrop-blur-xl">
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/42">
                 Catalogue
@@ -90,7 +107,11 @@ export function ProgramCategoryPage({
       </section>
 
       <section className="pb-20 md:pb-24">
-        <div className="luxury-container grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div
+          className={`luxury-container grid gap-6 md:grid-cols-2 xl:grid-cols-3 ${
+            programs.length % 3 === 2 ? "[&>*:last-child]:xl:col-span-2" : ""
+          }`}
+        >
           {programs.map((program, index) => (
             <Link key={program.slug} href={`${basePath}/${program.slug}`} className="block">
               <BentoCard

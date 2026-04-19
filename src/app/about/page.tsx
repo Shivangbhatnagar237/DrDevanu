@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Brain, Quote, Sparkles, Waves } from "lucide-react";
+import { Brain, Orbit, Quote, Sparkles, Waves } from "lucide-react";
 import { BentoCard } from "@/components/BentoCard";
 import { Footer } from "@/components/Footer";
 import { Heading } from "@/components/Heading";
@@ -27,7 +27,7 @@ export default function AboutPage() {
             <h1 className="font-serif text-6xl leading-[1.02] text-ink md:text-7xl lg:text-8xl">
               From Mountains to Mind.
             </h1>
-            <div className="mt-8 space-y-5 text-base leading-8 text-ink/68 md:text-lg">
+            <div className="copy-justify mt-8 space-y-5 text-base leading-8 text-ink/68 md:text-lg">
               {aboutStory.slice(0, 2).map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -137,7 +137,7 @@ export default function AboutPage() {
             className="max-w-3xl"
           />
 
-          <div className="mt-12 grid auto-rows-[minmax(260px,auto)] gap-6 lg:grid-cols-4">
+          <div className="mt-12 grid auto-rows-[minmax(220px,auto)] gap-5 lg:grid-cols-6">
             <BentoCard className="relative min-h-[420px] bg-charcoal lg:col-span-2 lg:row-span-2">
               <Image
                 src={images.subconscious}
@@ -160,7 +160,7 @@ export default function AboutPage() {
               </div>
             </BentoCard>
 
-            <BentoCard className="flex min-h-[300px] flex-col justify-center bg-honey p-8 text-center lg:col-span-2">
+            <BentoCard className="flex min-h-[280px] flex-col justify-center bg-honey p-8 text-center lg:col-span-2">
               <Waves
                 className="mx-auto mb-6 h-11 w-11 stroke-[1.25] text-plum"
                 aria-hidden="true"
@@ -174,7 +174,11 @@ export default function AboutPage() {
               </p>
             </BentoCard>
 
-            <BentoCard className="flex min-h-[300px] flex-col justify-center bg-[#EFEFEA] p-8 lg:col-span-2">
+            <BentoCard className="flex min-h-[280px] flex-col justify-center bg-[#EFEFEA] p-8 lg:col-span-2">
+              <Orbit
+                className="mb-6 h-10 w-10 stroke-[1.25] text-plum"
+                aria-hidden="true"
+              />
               <h3 className="font-serif text-4xl leading-tight text-ink">
                 Quantum Manifestation
               </h3>
@@ -185,7 +189,7 @@ export default function AboutPage() {
               </p>
             </BentoCard>
 
-            <BentoCard className="flex min-h-[300px] flex-col justify-center bg-white p-8 lg:col-span-2">
+            <BentoCard className="flex min-h-[280px] flex-col justify-center bg-white p-8 lg:col-span-2">
               <Brain
                 className="mb-6 h-10 w-10 stroke-[1.25] text-plum"
                 aria-hidden="true"
@@ -199,15 +203,38 @@ export default function AboutPage() {
                 transformation.
               </p>
             </BentoCard>
+
+            <BentoCard className="relative min-h-[280px] overflow-hidden bg-[#EDE7DD] lg:col-span-2">
+              <Image
+                src={images.editorial}
+                alt="Dr. Devanu in a reflective portrait"
+                fill
+                sizes="(min-width: 1024px) 24vw, 100vw"
+                className="object-cover object-[center_26%]"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(250,248,245,0.08)_12%,rgba(45,45,45,0.48)_100%)]" />
+              <div className="absolute inset-x-0 bottom-0 p-7 text-white">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/60">
+                  Healing Presence
+                </p>
+                <p className="mt-3 max-w-[18rem] text-sm leading-7 text-white/78">
+                  A gentle therapeutic presence rooted in listening, steadiness,
+                  compassion, and thoughtful spiritual inquiry.
+                </p>
+              </div>
+            </BentoCard>
           </div>
         </div>
       </section>
 
       <section className="pb-16 md:pb-24">
         <div className="luxury-container">
-          <div className="grid gap-6 md:grid-cols-3">
-            {healingPillars.map((pillar) => (
-              <BentoCard key={pillar.title} className="bg-white p-8">
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {healingPillars.map((pillar, index) => (
+              <BentoCard
+                key={pillar.title}
+                className={`p-8 ${index === 0 ? "bg-white xl:col-span-2" : "bg-white"}`}
+              >
                 <h3 className="font-serif text-3xl leading-tight text-ink">
                   {pillar.title}
                 </h3>

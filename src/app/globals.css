@@ -33,12 +33,6 @@ a {
   text-decoration: none;
 }
 
-p,
-li {
-  text-align: justify;
-  text-justify: inter-word;
-}
-
 button,
 a {
   -webkit-tap-highlight-color: transparent;
@@ -64,5 +58,11 @@ a {
 
   .soft-shadow {
     box-shadow: 0 24px 80px rgba(45, 45, 45, 0.08);
+  }
+
+  .copy-justify p,
+  .copy-justify li {
+    text-align: justify;
+    text-justify: inter-word;
   }
 }

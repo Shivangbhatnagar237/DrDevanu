@@ -24,7 +24,7 @@ export function Heading({
         {title}
       </h2>
       {children ? (
-        <div className="mt-6 text-base leading-8 text-ink/68 md:text-lg">
+        <div className="copy-justify mt-6 text-base leading-8 text-ink/68 md:text-lg">
           {children}
         </div>
       ) : null}

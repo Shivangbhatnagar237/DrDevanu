@@ -75,7 +75,7 @@ export default function ContactPage() {
 
       <section className="pb-20 md:pb-24">
         <div className="luxury-container grid gap-6 lg:grid-cols-3">
-          <div className="rounded-[2rem] bg-honey p-8 shadow-[0_20px_60px_rgba(45,45,45,0.06)]">
+          <div className="rounded-[2rem] bg-mist/90 p-8 shadow-[0_20px_60px_rgba(45,45,45,0.06)]">
             <Sparkles className="h-9 w-9 text-plum" aria-hidden="true" />
             <h2 className="mt-6 font-serif text-3xl leading-tight text-ink">
               Mentorship

@@ -17,7 +17,12 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Dr. Devanu | Inner Peace Retreats",
   description:
-    "A premium wellness and spiritual healing sanctuary for intentional presence, digital rest, and self-healing."
+    "A premium wellness and spiritual healing sanctuary for intentional presence, digital rest, and self-healing.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico"
+  }
 };
 
 export default function RootLayout({

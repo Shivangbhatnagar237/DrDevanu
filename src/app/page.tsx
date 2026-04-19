@@ -13,7 +13,6 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-sanctuary">
       <Navbar theme="dark" />
-
       <section className="relative flex min-h-[820px] overflow-hidden bg-[#E7ECE7] pt-28 text-ink md:min-h-screen">
         <Image
           src={images.hero}
@@ -21,11 +20,11 @@ export default function HomePage() {
           fill
           priority
           sizes="100vw"
-          className="scale-[1.02] object-cover object-[52%_40%] saturate-[0.96] transition-transform duration-700 md:scale-[1.03]"
+          className="scale-[1.02] object-cover object-right saturate-[0.96] transition-transform duration-700 md:object-[52%_40%] md:scale-[1.03]"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,248,245,0.92)_0%,rgba(250,248,245,0.58)_28%,rgba(250,248,245,0.08)_58%,rgba(232,236,231,0)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_58%_38%,rgba(255,255,255,0)_0%,rgba(255,255,255,0)_56%,rgba(30,42,36,0.18)_100%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-sanctuary/80 to-transparent" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(24,33,29,0.54)_0%,rgba(24,33,29,0.20)_32%,rgba(24,33,29,0.06)_54%,rgba(232,236,231,0.02)_100%),linear-gradient(90deg,rgba(250,248,245,0.18)_0%,rgba(250,248,245,0.08)_24%,rgba(250,248,245,0.03)_45%,rgba(232,236,231,0)_100%)] md:bg-[linear-gradient(90deg,rgba(250,248,245,0.92)_0%,rgba(250,248,245,0.58)_28%,rgba(250,248,245,0.08)_58%,rgba(232,236,231,0)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_58%_38%,rgba(255,255,255,0)_0%,rgba(255,255,２５５,０)_５６%,rgba(３０,４２,３６,０.１８)_１００%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-sanctuary/8₀ to-transparent" />
 
         <div className="luxury-container relative z-10 flex min-h-[680px] flex-col justify-between pb-14 pt-10 md:min-h-[calc(100vh-7rem)] md:pb-20">
           <div className="hidden justify-center pt-1 text-sm font-semibold text-ink/74 md:flex">
@@ -33,17 +32,17 @@ export default function HomePage() {
           </div>
 
           <div className="grid flex-1 items-end gap-10 pb-8 md:grid-cols-[1fr_0.72fr] md:pb-12">
-            <div className="max-w-3xl">
-              <p className="mb-6 text-sm font-semibold uppercase text-ink/64">
+            <div className="max-w-xl rounded-[2rem] bg-[rgba(29,39,34,0.26)] px-5 py-6 shadow-[0_20px_60px_rgba(16,20,18,0.18)] backdrop-blur-md md:max-w-3xl md:rounded-none md:bg-transparent md:px-0 md:py-0 md:shadow-none md:backdrop-blur-0">
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-white/78 md:mb-6 md:text-sm md:tracking-normal md:text-ink/64">
                 Mountain-born Psychospiritual Healing
               </p>
-              <h1 className="font-serif text-6xl leading-[0.98] text-ink md:text-7xl lg:text-8xl">
+              <h1 className="max-w-[11ch] font-serif text-[2.8rem] leading-[0.98] text-white [text-wrap:balance] md:max-w-none md:text-7xl md:text-ink lg:text-8xl">
                 Start Your Journey to Inner Peace
               </h1>
             </div>
 
-            <div className="max-w-md justify-self-start md:justify-self-end">
-              <p className="text-base leading-8 text-ink/72 md:text-lg">
+            <div className="max-w-md justify-self-start rounded-[1.75rem] bg-white/18 p-5 shadow-[0_18px_50px_rgba(18,24,22,0.16)] backdrop-blur-md md:justify-self-end md:rounded-none md:bg-transparent md:p-0 md:shadow-none md:backdrop-blur-0">
+              <p className="text-base leading-7 text-white/88 md:text-lg md:leading-8 md:text-ink/72">
                 Holistic psychospiritual therapy for emotional clarity, spiritual
                 wellness, and a life shaped by joy, purpose, and peace.
               </p>
@@ -51,7 +50,7 @@ export default function HomePage() {
                 <ButtonLink href="/about">Join My Course</ButtonLink>
                 <Link
                   href="/#retreats"
-                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-ink/18 bg-white/42 px-7 text-sm font-semibold text-ink backdrop-blur-md transition duration-300 hover:border-plum/28 hover:bg-white/70"
+                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/32 bg-white/20 px-7 text-sm font-semibold text-white backdrop-blur-md transition duration-300 hover:border-white/58 hover:bg-white/30 md:border-ink/18 md:bg-white/42 md:text-ink md:hover:border-plum/28 md:hover:bg-white/70"
                 >
                   View Retreats
                 </Link>

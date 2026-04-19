@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, Plus } from "lucide-react";
+import { Menu, Plus, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ButtonLink } from "./ButtonLink";
 
@@ -20,6 +21,8 @@ type NavbarProps = {
 
 export function Navbar({ theme = "light" }: NavbarProps) {
   const [atTop, setAtTop] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
   const isLight = theme === "light";
 
   useEffect(() => {
@@ -29,6 +32,10 @@ export function Navbar({ theme = "light" }: NavbarProps) {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-8">
@@ -64,7 +71,7 @@ export function Navbar({ theme = "light" }: NavbarProps) {
             />
           </span>
           <span
-            className={`hidden whitespace-nowrap font-serif text-xl leading-none transition-all duration-500 sm:block ${
+            className={`whitespace-nowrap font-serif text-lg leading-none transition-all duration-500 sm:text-xl ${
               atTop ? "opacity-100" : "md:max-w-0 md:overflow-hidden md:opacity-0"
             }`}
           >
@@ -121,14 +128,49 @@ export function Navbar({ theme = "light" }: NavbarProps) {
           <Plus className="h-4 w-4 lg:hidden" aria-hidden="true" />
         </ButtonLink>
 
-        <Link
-          href="/about"
+        <button
+          type="button"
           className="flex h-11 w-11 items-center justify-center rounded-full bg-plum text-white shadow-[0_16px_40px_rgba(107,91,149,0.22)] md:hidden"
-          aria-label="Open menu"
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-navigation"
+          onClick={() => setIsMobileMenuOpen((open) => !open)}
         >
-          <Menu className="h-5 w-5 stroke-[1.6]" aria-hidden="true" />
-        </Link>
+          {isMobileMenuOpen ? (
+            <X className="h-5 w-5 stroke-[1.6]" aria-hidden="true" />
+          ) : (
+            <Menu className="h-5 w-5 stroke-[1.6]" aria-hidden="true" />
+          )}
+        </button>
       </nav>
+
+      <div
+        id="mobile-navigation"
+        className={`mx-auto mt-3 max-w-[1180px] overflow-hidden transition-all duration-300 md:hidden ${
+          isMobileMenuOpen
+            ? "max-h-[420px] opacity-100"
+            : "pointer-events-none max-h-0 opacity-0"
+        }`}
+      >
+        <div className="rounded-[2rem] border border-white/55 bg-[rgba(250,248,245,0.94)] p-3 shadow-[0_24px_80px_rgba(45,45,45,0.12)] backdrop-blur-2xl">
+          <div className="flex flex-col gap-2">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-[1.25rem] px-4 py-3 text-base font-medium text-ink/82 transition duration-200 hover:bg-white hover:text-plum"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          <ButtonLink href="/about" className="mt-3 flex w-full justify-center">
+            Book Session
+          </ButtonLink>
+        </div>
+      </div>
     </header>
   );
 }

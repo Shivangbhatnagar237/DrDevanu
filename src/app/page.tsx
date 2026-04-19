@@ -7,7 +7,7 @@ import { ButtonLink } from "@/components/ButtonLink";
 import { Footer } from "@/components/Footer";
 import { Heading } from "@/components/Heading";
 import { Navbar } from "@/components/Navbar";
-import { images, offerings } from "@/lib/content";
+import { featuredPaths, homepageHighlights, images } from "@/lib/content";
 
 export default function HomePage() {
   return (
@@ -23,8 +23,8 @@ export default function HomePage() {
           className="scale-[1.02] object-cover object-right saturate-[0.96] transition-transform duration-700 md:object-[52%_40%] md:scale-[1.03]"
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(24,33,29,0.54)_0%,rgba(24,33,29,0.20)_32%,rgba(24,33,29,0.06)_54%,rgba(232,236,231,0.02)_100%),linear-gradient(90deg,rgba(250,248,245,0.18)_0%,rgba(250,248,245,0.08)_24%,rgba(250,248,245,0.03)_45%,rgba(232,236,231,0)_100%)] md:bg-[linear-gradient(90deg,rgba(250,248,245,0.92)_0%,rgba(250,248,245,0.58)_28%,rgba(250,248,245,0.08)_58%,rgba(232,236,231,0)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_58%_38%,rgba(255,255,255,0)_0%,rgba(255,255,２５５,０)_５６%,rgba(３０,４２,３６,０.１８)_１００%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-sanctuary/8₀ to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_58%_38%,rgba(255,255,255,0)_0%,rgba(255,255,255,0)_56%,rgba(30,42,36,0.18)_100%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-sanctuary/80 to-transparent" />
 
         <div className="luxury-container relative z-10 flex min-h-[680px] flex-col justify-between pb-14 pt-10 md:min-h-[calc(100vh-7rem)] md:pb-20">
           <div className="hidden justify-center pt-1 text-sm font-semibold text-ink/74 md:flex">
@@ -47,12 +47,12 @@ export default function HomePage() {
                 wellness, and a life shaped by joy, purpose, and peace.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <ButtonLink href="/about">Join My Course</ButtonLink>
+                <ButtonLink href="/mentorship-programs">Explore Programs</ButtonLink>
                 <Link
-                  href="/#retreats"
+                  href="/therapy-programs"
                   className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/32 bg-white/20 px-7 text-sm font-semibold text-white backdrop-blur-md transition duration-300 hover:border-white/58 hover:bg-white/30 md:border-ink/18 md:bg-white/42 md:text-ink md:hover:border-plum/28 md:hover:bg-white/70"
                 >
-                  View Retreats
+                  View Therapy
                 </Link>
               </div>
             </div>
@@ -89,11 +89,7 @@ export default function HomePage() {
 
       <section className="relative z-10 -mt-8 pb-10 md:-mt-14 md:pb-14">
         <div className="luxury-container grid gap-3 rounded-[2rem] border border-white/54 bg-white/58 p-3 shadow-[0_24px_80px_rgba(45,45,45,0.08)] backdrop-blur-2xl md:grid-cols-3">
-          {[
-            ["01", "Private inner-work sessions"],
-            ["02", "Subconscious reprogramming"],
-            ["03", "Mountain-inspired healing"]
-          ].map(([number, label]) => (
+          {homepageHighlights.map(([number, label]) => (
             <div
               key={number}
               className="flex min-h-24 items-center gap-5 rounded-[1.5rem] bg-sanctuary/70 px-6"
@@ -177,22 +173,28 @@ export default function HomePage() {
       <section id="services" className="py-16 md:py-28">
         <div className="luxury-container">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <Heading title="Ways to Reconnect" className="max-w-2xl" />
-            <ArrowLink href="/about" className="mb-2">
-              View All Offerings
+            <Heading
+              title="Programs, Therapies & Workshops"
+              className="max-w-2xl"
+            >
+              <p>
+                Explore the new offering architecture: mentorship pathways,
+                therapy programs, and workshop tracks that help visitors move
+                into the right depth of support.
+              </p>
+            </Heading>
+            <ArrowLink href="/mentorship-programs" className="mb-2">
+              Browse All Pathways
             </ArrowLink>
           </div>
 
-          <div
-            id="retreats"
-            className="mt-12 grid gap-8 md:grid-cols-3 md:gap-6 lg:gap-8"
-          >
-            {offerings.map((offering) => (
-              <article key={offering.title} className="group">
+          <div className="mt-12 grid gap-8 md:grid-cols-3 md:gap-6 lg:gap-8">
+            {featuredPaths.map((path) => (
+              <article key={path.title} className="group">
                 <div className="relative aspect-[0.74/1] overflow-hidden rounded-[2rem] bg-charcoal">
                   <Image
-                    src={offering.image}
-                    alt={offering.title}
+                    src={path.image}
+                    alt={path.title}
                     fill
                     sizes="(min-width: 768px) 33vw, 100vw"
                     className="object-cover grayscale transition duration-700 group-hover:scale-[1.04] group-hover:grayscale-0"
@@ -200,11 +202,19 @@ export default function HomePage() {
                   <div className="absolute inset-0 bg-charcoal/10 transition duration-500 group-hover:bg-charcoal/0" />
                 </div>
                 <h3 className="mt-7 text-xl font-semibold text-ink">
-                  {offering.title}
+                  {path.title}
                 </h3>
                 <p className="mt-3 text-sm leading-7 text-ink/62">
-                  {offering.description}
+                  {path.description}
                 </p>
+                <ul className="mt-5 space-y-2 text-sm leading-6 text-ink/58">
+                  {path.preview.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                <ArrowLink href={path.href} className="mt-6">
+                  Explore {path.title}
+                </ArrowLink>
               </article>
             ))}
           </div>

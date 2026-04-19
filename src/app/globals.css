@@ -33,6 +33,12 @@ a {
   text-decoration: none;
 }
 
+p,
+li {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 button,
 a {
   -webkit-tap-highlight-color: transparent;

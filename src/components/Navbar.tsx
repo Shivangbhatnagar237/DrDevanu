@@ -10,9 +10,10 @@ import { ButtonLink } from "./ButtonLink";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/#services", label: "Services" },
-  { href: "/#retreats", label: "Retreats" },
-  { href: "/#insights", label: "Insights" }
+  { href: "/mentorship-programs", label: "Mentorship" },
+  { href: "/therapy-programs", label: "Therapy" },
+  { href: "/workshops", label: "Workshops" },
+  { href: "/contact", label: "Contact" }
 ];
 
 type NavbarProps = {
@@ -118,7 +119,7 @@ export function Navbar({ theme = "light" }: NavbarProps) {
         </div>
 
         <ButtonLink
-          href="/about"
+          href="/contact"
           variant="primary"
           className={`hidden min-h-11 px-6 text-sm transition-all duration-500 md:inline-flex ${
             atTop ? "" : "md:px-5"
@@ -166,7 +167,7 @@ export function Navbar({ theme = "light" }: NavbarProps) {
             ))}
           </div>
 
-          <ButtonLink href="/about" className="mt-3 flex w-full justify-center">
+          <ButtonLink href="/contact" className="mt-3 flex w-full justify-center">
             Book Session
           </ButtonLink>
         </div>

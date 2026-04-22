@@ -120,7 +120,10 @@ export function ContactInquiryForm() {
       return;
     }
 
-    void handleEmailSubmit();
+    setSubmitState("email-error");
+    setSubmitMessage(
+      "WhatsApp is not configured yet for this page. Please try the email option below for now."
+    );
   };
 
   const handleEmailSubmit = async () => {

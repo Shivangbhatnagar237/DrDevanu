@@ -6,7 +6,7 @@ export default function TherapyProgramsPage() {
     <ProgramCategoryPage
       eyebrow="Therapy Programs"
       title="Focused therapy support for emotional pain, trauma, and life transitions."
-      intro="These therapy programs hold specific emotional and psychological concerns with more structure and clarity. The goal is to help visitors understand where they can seek support, what each therapeutic pathway addresses, and which offering best matches their current reality."
+      intro="These therapy programs support specific emotional and psychological concerns with care, depth, and a more focused therapeutic container. Each pathway addresses a distinct area of pain, healing, or transition."
       programs={therapyPrograms}
       categoryLabel="Therapy Program"
       basePath="/therapy-programs"

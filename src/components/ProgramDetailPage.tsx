@@ -109,35 +109,35 @@ export function ProgramDetailPage({
 
           <div className="rounded-[2.2rem] border border-white/60 bg-white/84 p-8 shadow-[0_20px_70px_rgba(45,45,45,0.06)] md:p-10">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-plum">
-              How this offering is held
+              A grounded and supportive pathway
             </p>
             <h2 className="mt-5 font-serif text-4xl leading-tight text-ink">
-              Grounded support with emotional depth, practical direction, and a clear next step.
+              Gentle structure, emotional depth, and space for meaningful inner change.
             </h2>
             <p className="mt-6 text-base leading-8 text-ink/66">
-              This page gives the visitor a quieter, more focused way to
-              understand the offering before reaching out. It avoids the long
-              same-page drop below the catalogue and instead creates a dedicated
-              space for the program itself.
+              Each program is designed to support healing with continuity,
+              reflection, and practical guidance so the work can be integrated
+              into everyday life with greater steadiness.
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               <div className="rounded-[1.5rem] border border-ink/8 bg-sanctuary px-5 py-5">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/40">
-                  Suitable when
+                  This may support you if
                 </p>
                 <p className="mt-3 text-sm leading-7 text-ink/64">
-                  You want more than general inspiration and are looking for a
-                  path with continuity, guidance, and thoughtful integration.
+                  You are looking for guided support that goes deeper than a
+                  one-time conversation and allows space for lasting shifts.
                 </p>
               </div>
               <div className="rounded-[1.5rem] border border-ink/8 bg-sanctuary px-5 py-5">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/40">
-                  Best next move
+                  To enquire about this program
                 </p>
                 <p className="mt-3 text-sm leading-7 text-ink/64">
-                  Reach out through the contact form or WhatsApp and mention this
-                  exact program title for a more relevant response.
+                  Reach out through the contact form or WhatsApp and mention the
+                  program title so the response can be more aligned to what you
+                  need.
                 </p>
               </div>
             </div>

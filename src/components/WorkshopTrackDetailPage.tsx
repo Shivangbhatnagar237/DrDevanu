@@ -109,20 +109,21 @@ export function WorkshopTrackDetailPage({ track }: WorkshopTrackDetailPageProps)
             <div className="mt-8 space-y-4">
               <div className="rounded-[1.5rem] border border-ink/8 bg-white/74 px-5 py-5">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/40">
-                  When to enquire
+                  A good fit when
                 </p>
                 <p className="mt-3 text-sm leading-7 text-ink/64">
-                  Reach out if you want an individual workshop topic, a grouped
-                  cluster, or help deciding which stream fits your audience.
+                  You are looking for a focused workshop experience around one
+                  theme, or would like a curated combination for a group,
+                  community, institution, or event.
                 </p>
               </div>
               <div className="rounded-[1.5rem] border border-ink/8 bg-white/74 px-5 py-5">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/40">
-                  Best next move
+                  To plan this workshop
                 </p>
                 <p className="mt-3 text-sm leading-7 text-ink/64">
                   Use the contact form or WhatsApp and mention this workshop
-                  track by name to continue the conversation.
+                  track by name to begin the conversation.
                 </p>
               </div>
             </div>

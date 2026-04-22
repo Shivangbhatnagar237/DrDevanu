@@ -222,8 +222,8 @@ export default function HomePage() {
             >
               <p>
                 Explore the new offering architecture: mentorship pathways,
-                therapy programs, and workshop tracks that help visitors move
-                into the right depth of support.
+                therapy programs, and workshop tracks designed for different
+                depths of support and healing.
               </p>
             </Heading>
             <ArrowLink href="/mentorship-programs" className="mb-2">

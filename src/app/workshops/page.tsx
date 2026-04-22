@@ -5,7 +5,7 @@ export default function WorkshopsPage() {
   return (
     <WorkshopTracksPage
       title="Short, focused workshop tracks for practical growth and inner balance."
-      intro="Alongside longer mentorship and therapy journeys, these workshops offer shorter formats that help people develop a specific life skill, emotional capacity, or contemplative practice. The tracks below reorganize the referenced workshop catalog into clearer themes."
+      intro="Alongside longer mentorship and therapy journeys, these workshops offer shorter formats for building specific life skills, emotional capacity, and contemplative practice in a practical and engaging way."
       tracks={workshopTracks}
     />
   );

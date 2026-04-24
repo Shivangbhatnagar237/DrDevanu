@@ -1,4 +1,11 @@
+import mentorshipSections from "@/lib/mentorshipSections.json";
+
 export type ProgramCategory = "mentorship" | "therapy";
+
+export type ProgramSection = {
+  heading: string;
+  lines: string[];
+};
 
 export type Program = {
   slug: string;
@@ -8,6 +15,7 @@ export type Program = {
   format: string;
   duration: string;
   benefits: string[];
+  sections?: ProgramSection[];
 };
 
 export type WorkshopTrack = {
@@ -89,7 +97,9 @@ export const featuredPaths = [
   }
 ] as const;
 
-export const mentorshipPrograms: Program[] = [
+const mentorshipProgramSections = mentorshipSections as Record<string, ProgramSection[]>;
+
+const mentorshipProgramsBase: Omit<Program, "sections">[] = [
   {
     slug: "self-healing-learning-program",
     title: "Self-Healing Learning Program",
@@ -148,7 +158,7 @@ export const mentorshipPrograms: Program[] = [
   },
   {
     slug: "financial-blocks-healing-and-attracting-money-mentorship",
-    title: "Financial Blocks Healing and Attracting Money Mentorship",
+    title: "Financial Blocks Healing and Attracting Money Mentorship Program",
     summary:
       "A reflective mentorship for uncovering scarcity patterns, emotional resistance around money, and inherited beliefs that interfere with receiving, stability, and growth.",
     audience: "Adults working on abundance and money mindset",
@@ -287,6 +297,11 @@ export const mentorshipPrograms: Program[] = [
     ]
   }
 ];
+
+export const mentorshipPrograms: Program[] = mentorshipProgramsBase.map((program) => ({
+  ...program,
+  sections: mentorshipProgramSections[program.title] ?? []
+}));
 
 export const therapyPrograms: Program[] = [
   {
@@ -505,7 +520,7 @@ export const workshopTracks: WorkshopTrack[] = [
     focus: "Relational awareness, parenting, and communication skills",
     topics: [
       "Handling Peer Pressure & Bullying.",
-      "Importance Of Love & Compassion For Improving Quality Of One's Own Life.",
+      "Importance Of Love & Compassion For Improving Quality Of One’s Own Life.",
       "Developing Effective, Efficient & Crystal Clear Communication.",
       "Building Strong Relationships & Becoming Likeable.",
       "Building Excellent Spousal Relationship.",

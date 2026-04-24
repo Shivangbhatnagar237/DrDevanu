@@ -38,7 +38,7 @@ export function Navbar({ theme = "light" }: NavbarProps) {
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-8">
       <nav
-        className={`mx-auto flex h-16 max-w-[1180px] items-center justify-between rounded-full px-3 transition-all duration-500 md:h-[72px] md:px-4 ${
+        className={`mx-auto flex h-20 max-w-[1180px] items-center justify-between rounded-full px-3 transition-all duration-500 md:h-[72px] md:px-4 ${
           atTop ? "w-full" : "w-full md:max-w-[820px]"
         } ${
           atTop
@@ -55,21 +55,21 @@ export function Navbar({ theme = "light" }: NavbarProps) {
           aria-label="Dr. Devanu home"
         >
           <span
-            className={`flex h-11 w-11 items-center justify-center overflow-hidden rounded-full transition duration-500 ${
+            className={`flex h-14 w-14 items-center justify-center overflow-hidden rounded-full transition duration-500 ${
               atTop ? "bg-white/0" : "bg-white/80"
             }`}
           >
             <Image
               src="/gla.png"
               alt=""
-              width={36}
-              height={40}
-              className="h-9 w-auto object-contain"
+              width={48}
+              height={52}
+              className="h-12 w-auto object-contain"
               priority
             />
           </span>
           <span
-            className={`whitespace-nowrap font-serif text-lg leading-none transition-all duration-500 sm:text-xl ${
+            className={`whitespace-nowrap font-serif text-xl leading-none transition-all duration-500 sm:text-2xl ${
               atTop ? "opacity-100" : "md:max-w-0 md:overflow-hidden md:opacity-0"
             }`}
           >

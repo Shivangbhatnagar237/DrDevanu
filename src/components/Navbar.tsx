@@ -55,9 +55,7 @@ export function Navbar({ theme = "light" }: NavbarProps) {
           aria-label="Dr. Devanu home"
         >
           <span
-            className={`flex h-14 w-14 items-center justify-center overflow-hidden rounded-full transition duration-500 ${
-              atTop ? "bg-white/0" : "bg-white/80"
-            }`}
+            className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full transition duration-500"
           >
             <Image
               src="/gla.png"

@@ -26,7 +26,7 @@ function splitMetadataLine(line: string) {
 }
 
 function renderSectionLines(lines: string[]) {
-  const blocks: JSX.Element[] = [];
+  const blocks: React.JSX.Element[] = [];
   let bulletBuffer: string[] = [];
 
   const flushBullets = (key: string) => {

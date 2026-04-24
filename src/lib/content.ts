@@ -73,7 +73,7 @@ export const featuredPaths = [
     title: "Therapy Programs",
     href: "/therapy-programs",
     description:
-      "Focused therapeutic containers for anxiety, depression, trauma, relationships, fears, addiction reversal, confidence, and health recovery.",
+      "Focused support for anxiety, depression, trauma, relationships, fears, addiction, confidence, and health recovery.",
     image:
       "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=90",
     preview: [

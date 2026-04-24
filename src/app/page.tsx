@@ -1,13 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, Flower2, Instagram, Linkedin, Youtube } from "lucide-react";
-import { ArrowLink } from "@/components/ArrowLink";
-import { BentoCard } from "@/components/BentoCard";
-import { ButtonLink } from "@/components/ButtonLink";
+import { ChevronDown, Instagram, Linkedin, Youtube } from "lucide-react";
 import { Footer } from "@/components/Footer";
 import { Heading } from "@/components/Heading";
 import { Navbar } from "@/components/Navbar";
 import { featuredPaths, homepageHighlights, images } from "@/lib/content";
+
+const homepageOfferingTitles: Record<string, string> = {
+  "Mentorship Programs": "Mentorship",
+  "Therapy Programs": "Therapy",
+  Workshops: "Workshops"
+};
 
 export default function HomePage() {
   return (
@@ -31,7 +34,7 @@ export default function HomePage() {
             Your Body, Your Ritual.
           </div>
 
-          <div className="grid flex-1 items-end gap-10 pb-8 md:grid-cols-[1fr_0.72fr] md:pb-12">
+          <div className="grid flex-1 items-end gap-10 pb-8 md:pb-12">
             <div className="max-w-xl rounded-[2rem] bg-[rgba(29,39,34,0.26)] px-5 py-6 shadow-[0_20px_60px_rgba(16,20,18,0.18)] backdrop-blur-md md:max-w-3xl md:rounded-none md:bg-transparent md:px-0 md:py-0 md:shadow-none md:backdrop-blur-0">
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-white/78 md:mb-6 md:text-sm md:tracking-normal md:text-ink/64">
                 Mountain-born Psychospiritual Healing
@@ -39,22 +42,6 @@ export default function HomePage() {
               <h1 className="max-w-[11ch] font-serif text-[2.8rem] leading-[0.98] text-white [text-wrap:balance] md:max-w-none md:text-7xl md:text-ink lg:text-8xl">
                 Start Your Journey to Inner Peace
               </h1>
-            </div>
-
-            <div className="max-w-md justify-self-start rounded-[1.75rem] bg-white/18 p-5 shadow-[0_18px_50px_rgba(18,24,22,0.16)] backdrop-blur-md md:justify-self-end md:rounded-none md:bg-transparent md:p-0 md:shadow-none md:backdrop-blur-0">
-              <p className="text-base leading-7 text-white/88 md:text-lg md:leading-8 md:text-ink/72">
-                Holistic psychospiritual therapy for emotional clarity, spiritual
-                wellness, and a life shaped by joy, purpose, and peace.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <ButtonLink href="/mentorship-programs">Explore Programs</ButtonLink>
-                <Link
-                  href="/therapy-programs"
-                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/32 bg-white/20 px-7 text-sm font-semibold text-white backdrop-blur-md transition duration-300 hover:border-white/58 hover:bg-white/30 md:border-ink/18 md:bg-white/42 md:text-ink md:hover:border-plum/28 md:hover:bg-white/70"
-                >
-                  View Therapy
-                </Link>
-              </div>
             </div>
           </div>
 
@@ -90,8 +77,8 @@ export default function HomePage() {
               ))}
             </div>
             <Link
-              href="/#insights"
-              aria-label="Scroll to insights"
+              href="/#services"
+              aria-label="Scroll to programs"
               className="flex h-11 w-11 items-center justify-center rounded-full bg-white/44 backdrop-blur-md transition duration-300 hover:bg-white/76"
             >
               <ChevronDown className="h-5 w-5 stroke-[1.4]" aria-hidden="true" />
@@ -101,7 +88,7 @@ export default function HomePage() {
 
       </section>
 
-      <section className="relative z-10 -mt-8 pb-10 md:-mt-14 md:pb-14">
+      <section className="relative z-10 -mt-8 pb-6 md:-mt-14 md:pb-8">
         <div className="luxury-container grid gap-3 rounded-[2rem] border border-white/54 bg-white/58 p-3 shadow-[0_24px_80px_rgba(45,45,45,0.08)] backdrop-blur-2xl md:grid-cols-3">
           {homepageHighlights.map(([number, label]) => (
             <div
@@ -115,126 +102,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="insights" className="py-16 md:py-24">
-        <div className="luxury-container grid gap-6 lg:grid-cols-[1.45fr_0.8fr]">
-          <BentoCard className="relative min-h-[420px] bg-charcoal lg:min-h-[520px]">
-            <Image
-              src={images.stillness}
-              alt="Person meditating in quiet morning light"
-              fill
-              sizes="(min-width: 1024px) 66vw, 100vw"
-              className="object-cover"
-            />
-            <div className="image-shade absolute inset-0" />
-            <div className="absolute inset-x-0 bottom-0 p-8 text-white md:p-12">
-              <h2 className="max-w-xl font-serif text-4xl leading-tight md:text-6xl">
-                Healing Through Stillness
-              </h2>
-              <ArrowLink href="/about" light className="mt-6">
-                Explore Philosophy
-              </ArrowLink>
-            </div>
-          </BentoCard>
-
-          <BentoCard className="grid min-h-[360px] bg-mist p-8 md:p-10 lg:min-h-[520px] lg:grid-rows-[auto_1fr]">
-            <div className="flex items-center justify-between gap-4">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white text-plum shadow-[0_14px_34px_rgba(107,91,149,0.08)]">
-                <Flower2 className="h-8 w-8 stroke-[1.35]" aria-hidden="true" />
-              </div>
-              <div className="flex flex-wrap justify-end gap-2">
-                <span className="rounded-full bg-white/76 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-ink/54">
-                  Breathwork
-                </span>
-                <span className="rounded-full bg-white/76 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-ink/54">
-                  Silence
-                </span>
-              </div>
-            </div>
-
-            <div className="mt-8 flex flex-col justify-between">
-              <h3 className="font-serif text-4xl leading-tight text-ink">
-                Curated Retreats
-              </h3>
-              <p className="mt-5 text-base leading-8 text-ink/66">
-                Seasonal immersions designed for nervous system restoration,
-                soul-alignment, contemplative clarity, and mindful reconnection.
-              </p>
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-[1.3rem] border border-white/70 bg-white/66 px-4 py-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-plum">
-                    Intimate setting
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-ink/62">
-                    Small group environments for deeper reflection and nervous system ease.
-                  </p>
-                </div>
-                <div className="rounded-[1.3rem] border border-white/70 bg-white/66 px-4 py-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-plum">
-                    Embodied reset
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-ink/62">
-                    Practices that bring people back into stillness, clarity, and presence.
-                  </p>
-                </div>
-              </div>
-              <ArrowLink href="/#retreats" className="mt-7">
-                Explore Retreats
-              </ArrowLink>
-            </div>
-          </BentoCard>
-        </div>
-      </section>
-
-      <section className="py-12 md:py-24">
-        <div className="luxury-container grid items-center gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
-          <Heading title="Modern Sanctuaries for the Digital Age">
-            <p>
-              Dr. Devanu bridges ancient contemplative wisdom with the real
-              emotional textures of modern life. As a Holistic Psychospiritual
-              Therapist, she combines psychotherapy, spiritual growth, somatic
-              practice, and lifestyle medicine into a grounded path of healing.
-            </p>
-            <p className="mt-5">
-              Each sanctuary is designed as a spacious pause where you can move
-              from survival patterns toward self-regulation, clarity, and a more
-              conscious creation of your reality.
-            </p>
-          </Heading>
-
-          <div className="relative aspect-[1.18/1] overflow-hidden rounded-[2rem] bg-mist soft-shadow md:aspect-[1.55/1]">
-            <Image
-              src={images.pottery}
-              alt="Minimal ceramic vessels warmed by sunlight"
-              fill
-              sizes="(min-width: 1024px) 52vw, 100vw"
-              className="object-cover"
-            />
-          </div>
-        </div>
-      </section>
-
-      <section id="services" className="py-16 md:py-28">
+      <section id="services" className="py-10 md:py-16">
         <div className="luxury-container">
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <Heading
-              title="Programs, Therapies & Workshops"
-              className="max-w-2xl"
-            >
-              <p>
-                Explore the new offering architecture: mentorship pathways,
-                therapy programs, and workshop tracks designed for different
-                depths of support and healing.
-              </p>
-            </Heading>
-            <ArrowLink href="/mentorship-programs" className="mb-2">
-              Browse All Pathways
-            </ArrowLink>
-          </div>
+          <Heading
+            title={"Programs, Therapies\u00A0&\u00A0Workshops"}
+            className="max-w-none"
+          />
 
-          <div className="mt-12 grid gap-8 md:grid-cols-3 md:gap-6 lg:gap-8">
+          <div className="mt-10 grid gap-8 md:grid-cols-3 md:gap-6 lg:gap-8">
             {featuredPaths.map((path) => (
-              <article key={path.title} className="group">
-                <div className="relative aspect-[0.74/1] overflow-hidden rounded-[2rem] bg-charcoal">
+              <Link
+                key={path.title}
+                href={path.href}
+                className="group block overflow-hidden rounded-[2rem] border border-white/60 bg-white/82 shadow-[0_22px_70px_rgba(45,45,45,0.08)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_28px_90px_rgba(45,45,45,0.10)]"
+              >
+                <div className="relative aspect-[0.78/1] overflow-hidden bg-charcoal">
                   <Image
                     src={path.image}
                     alt={path.title}
@@ -242,23 +124,20 @@ export default function HomePage() {
                     sizes="(min-width: 768px) 33vw, 100vw"
                     className="object-cover grayscale transition duration-700 group-hover:scale-[1.04] group-hover:grayscale-0"
                   />
-                  <div className="absolute inset-0 bg-charcoal/10 transition duration-500 group-hover:bg-charcoal/0" />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,20,20,0.08)_0%,rgba(20,20,20,0.34)_100%)] transition duration-500 group-hover:bg-[linear-gradient(180deg,rgba(20,20,20,0.02)_0%,rgba(20,20,20,0.20)_100%)]" />
                 </div>
-                <h3 className="mt-7 text-xl font-semibold text-ink">
-                  {path.title}
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-ink/62">
-                  {path.description}
-                </p>
-                <ul className="mt-5 space-y-2 text-sm leading-6 text-ink/58">
-                  {path.preview.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-                <ArrowLink href={path.href} className="mt-6">
-                  Explore {path.title}
-                </ArrowLink>
-              </article>
+                <div className="p-6 md:p-7">
+                  <h3 className="text-[1.7rem] font-semibold leading-tight text-ink md:text-[1.9rem]">
+                    {homepageOfferingTitles[path.title] ?? path.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-ink/62">
+                    {path.description}
+                  </p>
+                  <div className="mt-7 inline-flex min-h-12 items-center justify-center rounded-full bg-plum px-7 text-sm font-semibold text-white shadow-[0_16px_40px_rgba(107,91,149,0.24)] transition duration-300 group-hover:bg-plum-light">
+                    Explore {homepageOfferingTitles[path.title] ?? path.title}
+                  </div>
+                </div>
+              </Link>
             ))}
           </div>
         </div>

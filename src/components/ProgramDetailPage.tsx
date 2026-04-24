@@ -100,6 +100,19 @@ function getSectionPreview(lines: string[], isMetadataSection: boolean) {
     : normalized;
 }
 
+function isLongSection(lines: string[], isMetadataSection: boolean) {
+  if (isMetadataSection) {
+    return lines.length > 3;
+  }
+
+  const substantiveLines = lines.filter((line) => !line.startsWith("### "));
+  const bulletCount = substantiveLines.filter((line) => line.startsWith("- ")).length;
+  const paragraphCount = substantiveLines.filter((line) => !line.startsWith("- ")).length;
+  const totalCharacters = substantiveLines.reduce((count, line) => count + line.length, 0);
+
+  return paragraphCount > 1 || bulletCount > 5 || totalCharacters > 340;
+}
+
 export function ProgramDetailPage({
   program,
   categoryLabel,
@@ -244,14 +257,55 @@ export function ProgramDetailPage({
             const isMetadataSection =
               metadata.length === section.lines.length &&
               /delivery|details/i.test(section.heading);
+            const isCollapsible = isLongSection(section.lines, isMetadataSection);
             const preview = getSectionPreview(section.lines, isMetadataSection);
+
+            if (!isCollapsible) {
+              return (
+                <article
+                  id={section.id}
+                  key={`${section.heading}-${index}`}
+                  className={`rounded-[2.2rem] border border-white/60 px-8 py-7 shadow-[0_20px_70px_rgba(45,45,45,0.06)] md:px-10 ${
+                    index % 2 === 0 ? "bg-white/84" : "bg-honey/88"
+                  }`}
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-plum">
+                    {categoryLabel}
+                  </p>
+                  <h2 className="mt-3 font-serif text-3xl leading-tight text-ink md:text-4xl">
+                    {section.heading}
+                  </h2>
+                  <div className="mt-6 border-t border-ink/8 pt-6">
+                    {isMetadataSection ? (
+                      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                        {metadata.map((item) => (
+                          <div
+                            key={`${item.label}-${item.value}`}
+                            className="rounded-[1.5rem] border border-ink/8 bg-white/80 px-5 py-5"
+                          >
+                            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/40">
+                              {item.label}
+                            </p>
+                            <p className="mt-3 text-sm leading-7 text-ink/68">
+                              {item.value}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="space-y-4">{renderSectionLines(section.lines)}</div>
+                    )}
+                  </div>
+                </article>
+              );
+            }
 
             return (
               <details
                 id={section.id}
                 key={`${section.heading}-${index}`}
                 open={index === 0}
-                className={`group rounded-[2.2rem] border border-white/60 shadow-[0_20px_70px_rgba(45,45,45,0.06)] ${
+                className={`group rounded-[2.2rem] border border-white/60 shadow-[0_20px_70px_rgba(45,45,45,0.06)] transition duration-300 hover:-translate-y-0.5 hover:border-plum/18 hover:shadow-[0_26px_90px_rgba(45,45,45,0.09)] ${
                   index % 2 === 0 ? "bg-white/84" : "bg-honey/88"
                 }`}
               >
@@ -264,12 +318,12 @@ export function ProgramDetailPage({
                       {section.heading}
                     </h2>
                     {preview ? (
-                      <p className="group-open:hidden mt-3 max-w-2xl text-sm leading-7 text-ink/58 md:text-base">
+                      <p className="group-open:hidden mt-3 max-w-2xl text-sm leading-7 text-ink/58 transition duration-300 group-hover:text-ink/68 md:text-base">
                         {preview}
                       </p>
                     ) : null}
                   </div>
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-ink/10 bg-white/78 text-ink/48 transition duration-300 group-hover:border-plum/20 group-hover:text-plum group-open:rotate-180">
+                  <span className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-ink/10 bg-white/78 text-ink/48 transition duration-300 group-hover:translate-x-0.5 group-hover:scale-[1.04] group-hover:border-[#B7ADD8] group-hover:bg-[#B7ADD8] group-hover:text-white group-open:rotate-180 group-open:border-[#B7ADD8] group-open:bg-[#B7ADD8] group-open:text-white">
                     <ChevronDown className="h-5 w-5 stroke-[1.8]" aria-hidden="true" />
                   </span>
                 </summary>

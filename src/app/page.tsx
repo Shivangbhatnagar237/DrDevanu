@@ -42,6 +42,12 @@ export default function HomePage() {
               <h1 className="max-w-[11ch] font-serif text-[2.8rem] leading-[0.98] text-white [text-wrap:balance] md:max-w-none md:text-7xl md:text-ink lg:text-8xl">
                 Start Your Journey to Inner Peace
               </h1>
+              <div className="mt-5 max-w-[20rem] rounded-[1.6rem] border border-white/18 bg-white/10 px-4 py-4 text-white/82 shadow-[0_18px_48px_rgba(16,20,18,0.12)] backdrop-blur-sm md:hidden">
+                <p className="text-sm leading-6">
+                  Mentorship, therapy, and workshops designed for emotional clarity,
+                  spiritual wellness, and grounded inner transformation.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -102,10 +108,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="services" className="py-10 md:py-16">
+      <section id="services" className="py-8 md:py-16">
         <div className="luxury-container">
           <Heading
-            title={"Programs, Therapies\u00A0&\u00A0Workshops"}
+            title="Programs, Therapies & Workshops"
             className="max-w-none"
           />
 

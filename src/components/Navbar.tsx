@@ -44,9 +44,27 @@ export function Navbar({ theme = "light" }: NavbarProps) {
           atTop
             ? "border border-transparent bg-transparent shadow-none backdrop-blur-0"
             : isLight
-              ? "border border-white/30 bg-white/20 text-white shadow-[0_18px_70px_rgba(26,26,26,0.10)] backdrop-blur-2xl"
-              : "border border-white/55 bg-white/58 text-ink shadow-[0_18px_70px_rgba(26,26,26,0.10)] backdrop-blur-2xl"
+              ? "border border-white/30 bg-white/10 text-white shadow-[0_18px_70px_rgba(26,26,26,0.10)] backdrop-blur-2xl"
+              : "border border-white/40 bg-white/10 text-ink shadow-[0_18px_70px_rgba(26,26,26,0.10)] backdrop-blur-2xl"
         }`}
+        style={
+          !atTop ? {
+            background:
+              'linear-gradient(120deg, rgba(255,255,255,0.32) 0%, rgba(255,255,255,0.18) 100%)',
+            boxShadow:
+              '0 4px 32px 0 rgba(31, 38, 135, 0.12), 0 1.5px 6px 0 rgba(31,38,135,0.08)',
+            border:
+              isLight
+                ? '1.5px solid rgba(255,255,255,0.38)'
+                : '1.5px solid rgba(255,255,255,0.22)',
+            backdropFilter: 'blur(24px)',
+            WebkitBackdropFilter: 'blur(24px)',
+            // Subtle noise texture overlay
+            backgroundBlendMode: 'overlay',
+            backgroundImage:
+              'linear-gradient(120deg, rgba(255,255,255,0.32) 0%, rgba(255,255,255,0.18) 100%), url("data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect width=\'40\' height=\'40\' fill=\'white\' fill-opacity=\'0\'/%3E%3Ccircle cx=\'20\' cy=\'20\' r=\'0.5\' fill=\'white\' fill-opacity=\'0.04\'/%3E%3C/svg%3E")',
+          } : undefined
+        }
         aria-label="Global navigation"
       >
         <Link

@@ -10,6 +10,7 @@ export default function TherapyProgramsPage() {
       programs={therapyPrograms}
       categoryLabel="Therapy Program"
       basePath="/therapy-programs"
+      simplifyCards
     />
   );
 }

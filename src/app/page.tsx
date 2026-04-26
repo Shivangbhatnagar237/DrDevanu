@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, Instagram, Linkedin, Youtube } from "lucide-react";
+import { ArrowRight, ChevronDown, Instagram, Linkedin, Youtube } from "lucide-react";
 import { Footer } from "@/components/Footer";
 import { Heading } from "@/components/Heading";
 import { Navbar } from "@/components/Navbar";
@@ -115,32 +115,48 @@ export default function HomePage() {
             className="max-w-none"
           />
 
-          <div className="mt-10 grid gap-8 md:grid-cols-3 md:gap-6 lg:gap-8">
-            {featuredPaths.map((path) => (
+          <div className="mt-10 grid gap-8 md:grid-cols-3 md:gap-6 lg:gap-8 items-stretch">
+            {featuredPaths.map((path, index) => (
               <Link
                 key={path.title}
                 href={path.href}
-                className="group block overflow-hidden rounded-[2rem] border border-white/60 bg-white/82 shadow-[0_22px_70px_rgba(45,45,45,0.08)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_28px_90px_rgba(45,45,45,0.10)]"
+                className="group flex flex-col h-full overflow-hidden rounded-[2.15rem] border border-white/65 bg-white/84 shadow-[0_22px_70px_rgba(45,45,45,0.08)] transition duration-500 hover:-translate-y-1.5 hover:shadow-[0_30px_100px_rgba(45,45,45,0.12)]"
               >
-                <div className="relative aspect-[1] overflow-hidden bg-charcoal">
+                <div className="relative aspect-[0.92] overflow-hidden bg-charcoal">
                   <Image
                     src={path.image}
                     alt={path.title}
                     fill
                     sizes="(min-width: 768px) 33vw, 100vw"
-                    className="object-cover  grayscale transition duration-700 group-hover:scale-[1.04] group-hover:grayscale-0"
+                    className="object-cover transition duration-700 group-hover:scale-[1.05]"
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,20,20,0.08)_0%,rgba(20,20,20,0.34)_100%)] transition duration-500 group-hover:bg-[linear-gradient(180deg,rgba(20,20,20,0.02)_0%,rgba(20,20,20,0.20)_100%)]" />
+                  <div className="absolute inset-0 rounded-[inherit] bg-[linear-gradient(180deg,rgba(20,20,20,0.04)_0%,rgba(20,20,20,0.12)_34%,rgba(20,20,20,0.44)_100%)]" />
+                  <div className="absolute inset-x-0 top-0 flex items-start justify-end p-5">
+                    <span className="font-serif text-4xl leading-none text-white/28">
+                      {(index + 1).toString().padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 p-5 text-white">
+                    <h3 className="max-w-[10ch] font-serif text-[2rem] leading-[1.02] text-white md:text-[2.15rem]">
+                      {homepageOfferingTitles[path.title] ?? path.title}
+                    </h3>
+                    <p className="mt-3 max-w-[20rem] text-sm leading-6 text-white/76">
+                      {path.preview[0]}
+                    </p>
+                  </div>
                 </div>
-                <div className="p-6 md:p-7">
-                  <h3 className="text-[1.7rem] font-semibold leading-tight text-ink md:text-[1.9rem]">
-                    {homepageOfferingTitles[path.title] ?? path.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-ink/62">
+                <div className="flex flex-1 flex-col p-6 md:p-7">
+                  <p className="text-sm leading-7 text-ink/60">
                     {path.description}
                   </p>
-                  <div className="mt-7 inline-flex min-h-12 items-center justify-center rounded-full bg-plum px-7 text-sm font-semibold text-white shadow-[0_16px_40px_rgba(107,91,149,0.24)] transition duration-300 group-hover:bg-plum-light">
-                    Explore {homepageOfferingTitles[path.title] ?? path.title}
+                  {/* Divider is now optional. Remove border for a cleaner look, or keep for separation. Here, we remove it for visual balance. */}
+                  <div className="mt-auto flex items-center justify-between gap-4 pt-5">
+                    <span className="text-sm font-medium text-ink/80">
+                      Explore {homepageOfferingTitles[path.title] ?? path.title}
+                    </span>
+                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-plum text-white shadow-[0_16px_40px_rgba(107,91,149,0.2)] transition duration-300 group-hover:translate-x-1 group-hover:bg-plum-light">
+                      <ArrowRight className="h-4 w-4 stroke-[1.9]" aria-hidden="true" />
+                    </span>
                   </div>
                 </div>
               </Link>

@@ -60,7 +60,7 @@ export const featuredPaths = [
     title: "Mentorship Programs",
     href: "/mentorship-programs",
     description:
-      "Long-form guidance pathways for self-healing, emotional maturity, meditation, parenting, breathwork, and conscious lifestyle shifts.",
+      "Long-form guidance for self-healing, emotional maturity, meditation, parenting, breathwork, and conscious lifestyle shifts.",
     image: "/mentorship.jpeg",
     preview: [
       "Self-Healing Learning Program",
@@ -84,10 +84,10 @@ export const featuredPaths = [
     title: "Workshops",
     href: "/workshops",
     description:
-      "Short, practical workshops covering emotional wellbeing, relationships, mindfulness, lifestyle, productivity, manifestation, and meditation.",
+      "Short, practical workshops for emotional wellbeing, relationships, mindfulness, productivity, manifestation, and meditation.",
     image: "/workshop.avif",
     preview: [
-      "Improving Mental Calmness & Peace Of Mind",
+      "Mental Calmness & Peace Of Mind",
       "Goal Manifestation Ways & Techniques",
       "Healing Through Mantra Chants"
     ]

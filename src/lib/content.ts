@@ -61,8 +61,7 @@ export const featuredPaths = [
     href: "/mentorship-programs",
     description:
       "Long-form guidance pathways for self-healing, emotional maturity, meditation, parenting, breathwork, and conscious lifestyle shifts.",
-    image:
-      "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&w=1200&q=90",
+    image: "/mentorship.jpeg",
     preview: [
       "Self-Healing Learning Program",
       "Effective Parenting Program",
@@ -74,8 +73,7 @@ export const featuredPaths = [
     href: "/therapy-programs",
     description:
       "Focused support for anxiety, depression, trauma, relationships, fears, addiction, confidence, and health recovery.",
-    image:
-      "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=90",
+    image: "/therapy.jpeg",
     preview: [
       "Depression, Anxiety & Stress Reversal",
       "Relationship Counseling & Therapy",
@@ -87,8 +85,7 @@ export const featuredPaths = [
     href: "/workshops",
     description:
       "Short, practical workshops covering emotional wellbeing, relationships, mindfulness, lifestyle, productivity, manifestation, and meditation.",
-    image:
-      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=90",
+    image: "/workshop.avif",
     preview: [
       "Improving Mental Calmness & Peace Of Mind",
       "Goal Manifestation Ways & Techniques",
@@ -596,7 +593,7 @@ export const methodology = [
     number: "01",
     title: "Transpersonal Psychology",
     description:
-      "Clinical psychological methods meet the spiritual dimension of human experience, supporting life transitions and personal growth."
+      "Psychological concepts meet the spiritual dimension of human experience, supporting life transitions and personal growth."
   },
   {
     number: "02",

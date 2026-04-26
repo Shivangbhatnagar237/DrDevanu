@@ -37,7 +37,7 @@ export default function HomePage() {
           <div className="grid flex-1 items-end gap-10 pb-8 md:pb-12">
             <div className="max-w-xl rounded-[2rem] bg-[rgba(29,39,34,0.26)] px-5 py-6 shadow-[0_20px_60px_rgba(16,20,18,0.18)] backdrop-blur-md md:max-w-3xl md:rounded-none md:bg-transparent md:px-0 md:py-0 md:shadow-none md:backdrop-blur-0">
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-white/78 md:mb-6 md:text-sm md:tracking-normal md:text-ink/64">
-                Mountain-born Psychospiritual Healing
+                Heal your Mind, Body, Energy & Soul
               </p>
               <h1 className="max-w-[11ch] font-serif text-[2.8rem] leading-[0.98] text-white [text-wrap:balance] md:max-w-none md:text-7xl md:text-ink lg:text-8xl">
                 Start Your Journey to Inner Peace
@@ -122,13 +122,13 @@ export default function HomePage() {
                 href={path.href}
                 className="group block overflow-hidden rounded-[2rem] border border-white/60 bg-white/82 shadow-[0_22px_70px_rgba(45,45,45,0.08)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_28px_90px_rgba(45,45,45,0.10)]"
               >
-                <div className="relative aspect-[0.78/1] overflow-hidden bg-charcoal">
+                <div className="relative aspect-[1] overflow-hidden bg-charcoal">
                   <Image
                     src={path.image}
                     alt={path.title}
                     fill
                     sizes="(min-width: 768px) 33vw, 100vw"
-                    className="object-cover grayscale transition duration-700 group-hover:scale-[1.04] group-hover:grayscale-0"
+                    className="object-cover  grayscale transition duration-700 group-hover:scale-[1.04] group-hover:grayscale-0"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,20,20,0.08)_0%,rgba(20,20,20,0.34)_100%)] transition duration-500 group-hover:bg-[linear-gradient(180deg,rgba(20,20,20,0.02)_0%,rgba(20,20,20,0.20)_100%)]" />
                 </div>

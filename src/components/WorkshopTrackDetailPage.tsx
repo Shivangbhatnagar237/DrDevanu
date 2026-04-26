@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { ButtonLink } from "@/components/ButtonLink";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
@@ -70,7 +70,7 @@ export function WorkshopTrackDetailPage({ track }: WorkshopTrackDetailPageProps)
       </section>
 
       <section className="pb-20 md:pb-24">
-        <div className="luxury-container grid gap-6 lg:grid-cols-[1.12fr_0.88fr]">
+        <div className="luxury-container">
           <div className="rounded-[2.2rem] border border-white/60 bg-white/84 p-8 shadow-[0_20px_70px_rgba(45,45,45,0.06)] md:p-10">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-plum">
               Topics in this track
@@ -89,54 +89,6 @@ export function WorkshopTrackDetailPage({ track }: WorkshopTrackDetailPageProps)
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-
-          <div className="rounded-[2.2rem] border border-white/60 bg-honey/88 p-8 shadow-[0_20px_70px_rgba(45,45,45,0.06)] md:p-10">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-plum">
-              Good fit for
-            </p>
-            <h2 className="mt-5 font-serif text-4xl leading-tight text-ink">
-              Groups, communities, institutions, or focused audiences looking for a shorter-format experience.
-            </h2>
-            <p className="mt-6 text-base leading-8 text-ink/66">
-              These topics can work well for workshops, curated sessions, or
-              event-based programming where people want a specific area of
-              growth, healing, or emotional education without enrolling into a
-              longer program first.
-            </p>
-
-            <div className="mt-8 space-y-4">
-              <div className="rounded-[1.5rem] border border-ink/8 bg-white/74 px-5 py-5">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/40">
-                  A good fit when
-                </p>
-                <p className="mt-3 text-sm leading-7 text-ink/64">
-                  You are looking for a focused workshop experience around one
-                  theme, or would like a curated combination for a group,
-                  community, institution, or event.
-                </p>
-              </div>
-              <div className="rounded-[1.5rem] border border-ink/8 bg-white/74 px-5 py-5">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/40">
-                  To plan this workshop
-                </p>
-                <p className="mt-3 text-sm leading-7 text-ink/64">
-                  Use the contact form or WhatsApp and mention this workshop
-                  track by name to begin the conversation.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href="/contact">Contact Dr. Devanu</ButtonLink>
-              <Link
-                href="/workshops"
-                className="inline-flex min-h-12 items-center justify-center rounded-full border border-ink/10 bg-white px-7 text-sm font-semibold text-ink transition duration-300 hover:border-plum/24 hover:text-plum"
-              >
-                Explore more workshop tracks
-                <ArrowRight className="ml-2 h-4 w-4 stroke-[1.6]" aria-hidden="true" />
-              </Link>
             </div>
           </div>
         </div>

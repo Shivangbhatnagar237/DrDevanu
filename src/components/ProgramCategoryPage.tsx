@@ -14,6 +14,7 @@ type ProgramCategoryPageProps = {
   programs: Program[];
   categoryLabel: string;
   basePath: string;
+  simplifyCards?: boolean;
 };
 
 const listingStyles = [
@@ -28,7 +29,8 @@ export function ProgramCategoryPage({
   intro,
   programs,
   categoryLabel,
-  basePath
+  basePath,
+  simplifyCards = false
 }: ProgramCategoryPageProps) {
   return (
     <main className="min-h-screen bg-sanctuary">
@@ -113,9 +115,10 @@ export function ProgramCategoryPage({
           }`}
         >
           {programs.map((program, index) => (
-            <Link key={program.slug} href={`${basePath}/${program.slug}`} className="block">
+            simplifyCards ? (
               <BentoCard
-                className={`group h-full border-white/60 p-7 transition duration-500 hover:-translate-y-1 hover:shadow-[0_26px_90px_rgba(45,45,45,0.10)] ${listingStyles[index % listingStyles.length]}`}
+                key={program.slug}
+                className={`h-full border-white/60 p-7 ${listingStyles[index % listingStyles.length]}`}
               >
                 <div className="flex items-start justify-between gap-4">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-plum">
@@ -126,28 +129,47 @@ export function ProgramCategoryPage({
                   </span>
                 </div>
 
-                <h2 className="mt-4 font-serif text-3xl leading-tight text-ink">
+                <h2 className="mt-5 font-serif text-3xl leading-tight text-ink">
                   {program.title}
                 </h2>
-                <p className="mt-5 text-sm leading-7 text-ink/66">
-                  {program.summary}
-                </p>
-
-                <div className="mt-6 flex flex-wrap gap-2">
-                  <span className="rounded-full border border-ink/8 bg-white/75 px-3 py-2 text-xs font-medium text-ink/56">
-                    {program.audience}
-                  </span>
-                  <span className="rounded-full border border-ink/8 bg-white/75 px-3 py-2 text-xs font-medium text-ink/56">
-                    {program.duration}
-                  </span>
-                </div>
-
-                <div className="mt-7 inline-flex items-center gap-2 text-sm font-medium text-plum transition duration-300 group-hover:gap-3">
-                  View details
-                  <ArrowRight className="h-4 w-4 stroke-[1.6]" aria-hidden="true" />
-                </div>
               </BentoCard>
-            </Link>
+            ) : (
+              <Link key={program.slug} href={`${basePath}/${program.slug}`} className="block">
+                <BentoCard
+                  className={`group h-full border-white/60 p-7 transition duration-500 hover:-translate-y-1 hover:shadow-[0_26px_90px_rgba(45,45,45,0.10)] ${listingStyles[index % listingStyles.length]}`}
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-plum">
+                      {categoryLabel}
+                    </p>
+                    <span className="font-serif text-4xl leading-none text-plum/24">
+                      {(index + 1).toString().padStart(2, "0")}
+                    </span>
+                  </div>
+
+                  <h2 className="mt-4 font-serif text-3xl leading-tight text-ink">
+                    {program.title}
+                  </h2>
+                  <p className="mt-5 text-sm leading-7 text-ink/66">
+                    {program.summary}
+                  </p>
+
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    <span className="rounded-full border border-ink/8 bg-white/75 px-3 py-2 text-xs font-medium text-ink/56">
+                      {program.audience}
+                    </span>
+                    <span className="rounded-full border border-ink/8 bg-white/75 px-3 py-2 text-xs font-medium text-ink/56">
+                      {program.duration}
+                    </span>
+                  </div>
+
+                  <div className="mt-7 inline-flex items-center gap-2 text-sm font-medium text-plum transition duration-300 group-hover:gap-3">
+                    View details
+                    <ArrowRight className="h-4 w-4 stroke-[1.6]" aria-hidden="true" />
+                  </div>
+                </BentoCard>
+              </Link>
+            )
           ))}
         </div>
       </section>
